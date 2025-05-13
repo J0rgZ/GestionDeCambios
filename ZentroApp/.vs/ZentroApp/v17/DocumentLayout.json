@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MARIA\\source\\repos\\ZentroApp\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\models\\modelosistema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\models\\modelosistema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ModeloSistema.cs",
+              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\ModeloSistema.cs",
+              "RelativeDocumentMoniker": "ZentroApp\\Models\\ModeloSistema.cs",
+              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\ModeloSistema.cs",
+              "RelativeToolTip": "ZentroApp\\Models\\ModeloSistema.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T17:33:59.998Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

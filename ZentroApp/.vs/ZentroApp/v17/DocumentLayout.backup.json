@@ -1,12 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MARIA\\source\\repos\\ZentroApp\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Viewstart.cshtml",
+              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\_Viewstart.cshtml",
+              "RelativeDocumentMoniker": "ZentroApp\\Views\\_Viewstart.cshtml",
+              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\_Viewstart.cshtml",
+              "RelativeToolTip": "ZentroApp\\Views\\_Viewstart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-13T17:03:57.946Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Shared\\Layout.cshtml",
+              "RelativeDocumentMoniker": "ZentroApp\\Views\\Shared\\Layout.cshtml",
+              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Shared\\Layout.cshtml",
+              "RelativeToolTip": "ZentroApp\\Views\\Shared\\Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-13T16:58:57.096Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
