@@ -9,146 +9,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZentroApp - Ingresar al Sistema</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
-    <style>
-        body {
-            background: linear-gradient(135deg, #3a6186, #89253e);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 10px;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            width: 100%;
-            max-width: 800px;
-            display: flex;
-        }
-
-        .login-welcome {
-            flex: 1;
-            background-color: #3a6186;
-            color: white;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-            .login-welcome h1 {
-                font-size: 2.5rem;
-                margin-bottom: 10px;
-                font-weight: 700;
-            }
-
-            .login-welcome p {
-                opacity: 0.8;
-                line-height: 1.6;
-            }
-
-        .login-form {
-            flex: 1;
-            padding: 40px;
-        }
-
-        .login-title {
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .form-control {
-            height: 50px;
-            border-radius: 5px;
-            box-shadow: none;
-            margin-bottom: 20px;
-            padding-left: 15px;
-            border: 1px solid #ddd;
-        }
-
-            .form-control:focus {
-                border-color: #3a6186;
-                box-shadow: 0 0 0 0.2rem rgba(58, 97, 134, 0.25);
-            }
-
-        .btn-login {
-            width: 100%;
-            background: linear-gradient(to right, #3a6186, #89253e);
-            border: none;
-            color: white;
-            height: 50px;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-            .btn-login:hover {
-                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-                transform: translateY(-2px);
-            }
-
-        .login-footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #666;
-        }
-
-        .form-group {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .form-control-icon {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-            color: #aaa;
-        }
-
-        .validation-summary-errors {
-            color: #dc3545;
-            background-color: rgba(220, 53, 69, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-        }
-
-            .validation-summary-errors ul {
-                list-style: none;
-                padding-left: 0;
-                margin-bottom: 0;
-            }
-
-        .alert {
-            margin-bottom: 20px;
-        }
-
-        @@media (max-width: 768px) {
-            .login-container {
-                flex-direction: column;
-            }
-
-            .login-welcome {
-                padding: 30px;
-            }
-
-            .login-form {
-                padding: 30px;
-            }
-        }
-    </style>
+    <link href="~/Source/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/Source/js/jquery-3.7.1.min.js"></script>
+    <script src="~/Source/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="~/Source/css/login.css" rel="stylesheet" />
 </head>
 <body>
+    <!-- Overlay de carga -->
+    <div class="overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Verificando credenciales...</div>
+    </div>
+
+    <!-- Mensaje de bienvenida -->
+    <div class="welcome-message" id="welcomeMessage">
+        <div class="welcome-title">¡Bienvenido(a)!</div>
+        <div id="welcomeUser">Nombre de Usuario</div>
+        <div class="welcome-role" id="welcomeRole">Rol de Usuario</div>
+    </div>
+
     <div class="login-container">
         <div class="login-welcome d-none d-md-flex">
             <div>
@@ -163,13 +43,6 @@
                 <h3>Iniciar Sesión</h3>
             </div>
 
-            @if (TempData["Mensaje"] != null)
-            {
-                <div class="alert alert-info">
-                    @TempData["Mensaje"]
-                </div>
-            }
-
             @if (TempData["Error"] != null)
             {
                 <div class="alert alert-danger">
@@ -177,34 +50,27 @@
                 </div>
             }
 
-            @using (Html.BeginForm("Login", "Usuarios", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-login" }))
+            @using (Html.BeginForm("Login", "Usuarios", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-login", id = "loginForm" }))
             {
                 @Html.AntiForgeryToken()
-
-                if (!ViewData.ModelState.IsValid)
-                {
-                    <div class="validation-summary-errors">
-                        @Html.ValidationSummary(true)
-                    </div>
-                }
 
                 <div class="form-group">
                     <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control" placeholder="Nombre de Usuario" required autofocus />
                     <span class="form-control-icon">
-                        <i class="fa fa-user"></i>
+                        <i class="fas fa-user"></i>
                     </span>
                 </div>
 
                 <div class="form-group">
                     <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña" required />
                     <span class="form-control-icon">
-                        <i class="fa fa-lock"></i>
+                        <i class="fas fa-lock"></i>
                     </span>
                 </div>
 
                 <div class="form-group">
-                    <select name="rolSeleccionado" id="rolSeleccionado" class="form-control">
-                        <option value="">-- Seleccionar Perfil (Opcional) --</option>
+                    <select name="rolID" id="rolID" class="form-control">
+                        <option value="">-- Seleccionar Rol (Opcional) --</option>
                         <option value="1">Administrador</option>
                         <option value="2">Jefe de Proyecto</option>
                         <option value="3">Analista</option>
@@ -214,11 +80,11 @@
                         <option value="7">Comité de Cambios</option>
                     </select>
                     <span class="form-control-icon">
-                        <i class="fa fa-users"></i>
+                        <i class="fas fa-users"></i>
                     </span>
                 </div>
 
-                <button type="submit" class="btn btn-login">Ingresar</button>
+                <button type="submit" class="btn btn-login">Ingresar al Sistema</button>
 
                 <div class="login-footer">
                     <p>© @DateTime.Now.Year - ZentroApp | Sistema de Gestión de Cambios</p>
@@ -227,7 +93,103 @@
         </div>
     </div>
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        // Mostrar mensajes de error del ModelState en un formato amigable
+        @if(!ViewData.ModelState.IsValid)
+        {
+            foreach (var key in ViewData.ModelState.Keys)
+            {
+                foreach (var error in ViewData.ModelState[key].Errors)
+                {
+                    <text>
+                    showErrorMessage('@Html.Raw(error.ErrorMessage)');
+                    </text>
+                }
+            }
+        }
+
+        // Función para mostrar mensaje de error
+        function showErrorMessage(message) {
+            // Si ya existe un div de alerta, actualizarlo
+            if ($('.alert-danger').length) {
+                $('.alert-danger').html(message);
+            } else {
+                // Crear un nuevo div de alerta
+                var alertDiv = $('<div class="alert alert-danger"></div>').text(message);
+                $('.login-title').after(alertDiv);
+            }
+        }
+
+        // Interceptar el envío del formulario para mostrar la animación de carga
+        $('#loginForm').on('submit', function(e) {
+            // Validar el formulario
+            if (this.checkValidity()) {
+                e.preventDefault(); // Prevenir envío normal
+
+                // Mostrar overlay de carga
+                $('#loadingOverlay').addClass('show');
+
+                // Simular verificación de credenciales (3 segundos)
+                setTimeout(function() {
+                    // Ocultar overlay de carga
+                    $('#loadingOverlay').removeClass('show');
+
+                    // Obtener datos del formulario
+                    var username = $('#nombreUsuario').val();
+                    var rolID = $('#rolID').val();
+                    var rolName = $('#rolID option:selected').text();
+
+                    if (!rolID) {
+                        rolName = "Usuario";
+                    }
+
+                    // Configurar mensaje de bienvenida
+                    $('#welcomeUser').text(username);
+                    $('#welcomeRole').text(rolName);
+
+                    // Añadir clase de estilo según el rol
+                    $('#welcomeRole').removeClass().addClass('welcome-role');
+
+                    switch(rolID) {
+                        case "1":
+                            $('#welcomeRole').addClass('role-admin');
+                            break;
+                        case "2":
+                            $('#welcomeRole').addClass('role-jefe');
+                            break;
+                        case "3":
+                            $('#welcomeRole').addClass('role-analista');
+                            break;
+                        case "4":
+                            $('#welcomeRole').addClass('role-desarrollador');
+                            break;
+                        case "5":
+                            $('#welcomeRole').addClass('role-qa');
+                            break;
+                        case "6":
+                            $('#welcomeRole').addClass('role-cliente');
+                            break;
+                        case "7":
+                            $('#welcomeRole').addClass('role-comite');
+                            break;
+                        default:
+                            $('#welcomeRole').addClass('role-admin');
+                    }
+
+                    // Mostrar mensaje de bienvenida
+                    $('#welcomeMessage').addClass('show');
+
+                    // Esperar 3 segundos y enviar el formulario
+                    setTimeout(function() {
+                        $('#welcomeMessage').removeClass('show');
+                        $('#loginForm')[0].submit(); // Enviar el formulario original
+                    }, 3000);
+
+                }, 3000);
+            }
+        });
+    });
+    </script>
 </body>
 </html>

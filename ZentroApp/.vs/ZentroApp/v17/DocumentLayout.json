@@ -1,37 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\",
+  "WorkspaceRootPath": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\zentroapp\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\zentroapp\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\models\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\usuarios\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\zentroapp\\views\\usuarios\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\usuarios\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\hp\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\source\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\source\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\zentroapp\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\shared\\layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\hp\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\models\\usuariosareas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\models\\usuariosareas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\hp\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\usuarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\usuarios\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\hp\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\zentroapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\zentroapp\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|c:\\users\\maria\\documents\\github\\gestiondecambios\\zentroapp\\zentroapp\\models\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\zentroapp\\models\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{581C3B1C-8AA9-4634-B961-B3E9834ABB5D}|ZentroApp\\ZentroApp.csproj|solutionrelative:zentroapp\\models\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -42,15 +54,66 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 9,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
+              "Title": "UsuariosAreas.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\UsuariosAreas.cs",
+              "RelativeDocumentMoniker": "ZentroApp\\Models\\UsuariosAreas.cs",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\UsuariosAreas.cs",
+              "RelativeToolTip": "ZentroApp\\Models\\UsuariosAreas.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-13T22:55:33.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Usuarios\\Index.cshtml",
+              "RelativeDocumentMoniker": "ZentroApp\\Views\\Usuarios\\Index.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Usuarios\\Index.cshtml",
+              "RelativeToolTip": "ZentroApp\\Views\\Usuarios\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-13T22:53:04.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "login.css",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Source\\css\\login.css",
+              "RelativeDocumentMoniker": "ZentroApp\\Source\\css\\login.css",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Source\\css\\login.css",
+              "RelativeToolTip": "ZentroApp\\Source\\css\\login.css",
+              "ViewState": "AgIAANsAAAAAAAAAAAAowAoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-13T22:22:38.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "ZentroApp\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "ZentroApp\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -59,94 +122,91 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "ZentroApp\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\HomeController.cs",
               "RelativeToolTip": "ZentroApp\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T19:16:55.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T19:16:55.717Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Usuarios\\Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Usuarios\\Login.cshtml",
               "RelativeDocumentMoniker": "ZentroApp\\Views\\Usuarios\\Login.cshtml",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Usuarios\\Login.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Usuarios\\Login.cshtml",
               "RelativeToolTip": "ZentroApp\\Views\\Usuarios\\Login.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-13T18:23:17.78Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\UsuariosController.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "ZentroApp\\Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\UsuariosController.cs",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Controllers\\UsuariosController.cs",
               "RelativeToolTip": "ZentroApp\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAOMAAAAAAAAAAAAqwAYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPAAAAAAAAAAAAAAAAEBAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-13T18:22:12.261Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Roles.cs",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Roles.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Roles.cs",
               "RelativeDocumentMoniker": "ZentroApp\\Models\\Roles.cs",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Roles.cs",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Roles.cs",
               "RelativeToolTip": "ZentroApp\\Models\\Roles.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-13T17:53:49.705Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T17:53:49.705Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Usuarios.cs",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Usuarios.cs",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Usuarios.cs",
               "RelativeDocumentMoniker": "ZentroApp\\Models\\Usuarios.cs",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Usuarios.cs",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Models\\Usuarios.cs",
               "RelativeToolTip": "ZentroApp\\Models\\Usuarios.cs",
-              "ViewState": "AgIAAG0BAAAAAAAAAAAAANAAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAE8BAAAAAAAAAAAAAGMBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-13T17:45:23.273Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Shared\\Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Shared\\Layout.cshtml",
               "RelativeDocumentMoniker": "ZentroApp\\Views\\Shared\\Layout.cshtml",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Shared\\Layout.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\Shared\\Layout.cshtml",
               "RelativeToolTip": "ZentroApp\\Views\\Shared\\Layout.cshtml",
-              "ViewState": "AgIAAIcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-05-13T17:45:15.96Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "_Viewstart.cshtml",
-              "DocumentMoniker": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\_Viewstart.cshtml",
+              "DocumentMoniker": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\_Viewstart.cshtml",
               "RelativeDocumentMoniker": "ZentroApp\\Views\\_Viewstart.cshtml",
-              "ToolTip": "C:\\Users\\MARIA\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\_Viewstart.cshtml",
+              "ToolTip": "C:\\Users\\HP\\Documents\\GitHub\\GestionDeCambios\\ZentroApp\\ZentroApp\\Views\\_Viewstart.cshtml",
               "RelativeToolTip": "ZentroApp\\Views\\_Viewstart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-13T17:45:10.36Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-13T17:45:10.36Z"
             }
           ]
         }

@@ -9,347 +9,101 @@ using ZentroApp.Models;
 
 namespace ZentroApp.Controllers
 {
-    [Authorize]
     public class UsuariosController : Controller
     {
         private ModeloSistema db = new ModeloSistema();
 
-        // GET: Usuarios
+        // GET: Usuarios/Index - Solo visible para administradores
         [Authorize(Roles = "Administrador")]
         public ActionResult Index()
         {
+            // Verificar si el usuario está autenticado y es administrador
+            if (Session["UserID"] == null || Session["RolNombre"].ToString() != "Administrador")
+            {
+                return RedirectToAction("Login");
+            }
+
             var usuarios = Usuarios.ListarUsuarios(db);
             return View(usuarios);
         }
 
-        // GET: Usuarios/Details/5
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Usuarios usuario = Usuarios.ObtenerUsuarioPorID(db, id.Value);
-
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(usuario);
-        }
-
-        // GET: Usuarios/Create
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Create()
-        {
-            ViewBag.RolID = new SelectList(db.Roles, "RolID", "NombreRol");
-            return View();
-        }
-
-        // POST: Usuarios/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Create([Bind(Include = "UsuarioID,NombreUsuario,Contrasena,Nombre,Apellido,Email,Telefono,RolID")] Usuarios usuario)
-        {
-            if (ModelState.IsValid)
-            {
-                if (Usuarios.AgregarUsuario(db, usuario))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "No se pudo agregar el usuario. Verifique que el nombre de usuario y correo no existan en el sistema.");
-                }
-            }
-
-            ViewBag.RolID = new SelectList(db.Roles, "RolID", "NombreRol", usuario.RolID);
-            return View(usuario);
-        }
-
-        // GET: Usuarios/Edit/5
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Usuarios usuario = Usuarios.ObtenerUsuarioPorID(db, id.Value);
-
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-
-            // No enviar la contraseña a la vista
-            usuario.Contrasena = string.Empty;
-
-            ViewBag.RolID = new SelectList(db.Roles, "RolID", "NombreRol", usuario.RolID);
-            return View(usuario);
-        }
-
-        // POST: Usuarios/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Edit([Bind(Include = "UsuarioID,NombreUsuario,Contrasena,Nombre,Apellido,Email,Telefono,RolID,Estado")] Usuarios usuario)
-        {
-            if (ModelState.IsValid)
-            {
-                if (Usuarios.EditarUsuario(db, usuario))
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "No se pudo editar el usuario. Verifique que el nombre de usuario y correo no existan en el sistema.");
-                }
-            }
-
-            ViewBag.RolID = new SelectList(db.Roles, "RolID", "NombreRol", usuario.RolID);
-            return View(usuario);
-        }
-
-        // GET: Usuarios/Delete/5
-        [Authorize(Roles = "Administrador")]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Usuarios usuario = Usuarios.ObtenerUsuarioPorID(db, id.Value);
-
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(usuario);
-        }
-
-        // POST: Usuarios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrador")]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            if (Usuarios.EliminarUsuario(db, id))
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                // Si no se pudo eliminar, volver a la vista de detalle con un mensaje de error
-                ModelState.AddModelError("", "No se pudo eliminar el usuario.");
-                return View(Usuarios.ObtenerUsuarioPorID(db, id));
-            }
-        }
-
-        // GET: Usuarios/MiPerfil
-        [Authorize]
-        public ActionResult MiPerfil()
-        {
-            string nombreUsuario = User.Identity.Name;
-            Usuarios usuario = db.Usuarios.FirstOrDefault(u => u.NombreUsuario == nombreUsuario);
-
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(usuario);
-        }
-
-        // GET: Usuarios/CambiarContrasena
-        [Authorize]
-        public ActionResult CambiarContrasena()
-        {
-            return View();
-        }
-
-        // POST: Usuarios/CambiarContrasena
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize]
-        public ActionResult CambiarContrasena(string contrasenaActual, string nuevaContrasena, string confirmarContrasena)
-        {
-            // Validar que la nueva contraseña coincida con la confirmación
-            if (nuevaContrasena != confirmarContrasena)
-            {
-                ModelState.AddModelError("", "La nueva contraseña y la confirmación no coinciden.");
-                return View();
-            }
-
-            // Obtener el usuario actual
-            string nombreUsuario = User.Identity.Name;
-            Usuarios usuario = db.Usuarios.FirstOrDefault(u => u.NombreUsuario == nombreUsuario);
-
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-
-            // Cambiar la contraseña
-            if (Usuarios.CambiarContrasena(db, usuario.UsuarioID, contrasenaActual, nuevaContrasena))
-            {
-                TempData["Mensaje"] = "La contraseña ha sido cambiada exitosamente.";
-                return RedirectToAction("MiPerfil");
-            }
-            else
-            {
-                ModelState.AddModelError("", "La contraseña actual es incorrecta o no se pudo cambiar la contraseña.");
-                return View();
-            }
-        }
-
-        // GET: Usuarios/Login (Sin autorización para permitir el acceso a todos)
-        [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        // GET: Usuarios/Login - Accesible para todos
+        public ActionResult Login()
         {
             // Si ya está autenticado, redirigir a la página de inicio
-            if (User.Identity.IsAuthenticated)
+            if (Session["UserID"] != null)
             {
                 return RedirectToAction("Index", "Home");
             }
 
-            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         // POST: Usuarios/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
-        public ActionResult Login(string nombreUsuario, string contrasena, string rolSeleccionado, string returnUrl)
+        public ActionResult Login(string nombreUsuario, string contrasena, int? rolID)
         {
             try
             {
                 // Intentar iniciar sesión
-                var usuario = Usuarios.IniciarSesion(db, nombreUsuario, contrasena);
+                var usuario = Usuarios.IniciarSesion(db, nombreUsuario, contrasena, rolID);
 
                 if (usuario != null)
                 {
-                    // Verificar si se seleccionó un rol específico
-                    if (!string.IsNullOrEmpty(rolSeleccionado))
+                    // Variables para el rol
+                    int? userRoleID = usuario.RolID;
+                    string rolNombre = "Usuario";
+
+                    // Determinar qué rol usar para la sesión
+                    if (rolID.HasValue && rolID > 0)
                     {
-                        int rolID = int.Parse(rolSeleccionado);
-
-                        // Verificar si el usuario tiene el rol seleccionado
-                        if (usuario.RolID != rolID)
+                        // Si se seleccionó un rol específico, verificar si el usuario tiene permiso para ese rol
+                        var selectedRole = db.Roles.Find(rolID.Value);
+                        if (selectedRole == null)
                         {
-                            // Verificar si el usuario tiene acceso a múltiples roles
-                            // En una aplicación real, podría haber una tabla de roles por usuario
-                            // Aquí simplemente permitimos el acceso para pruebas
+                            ModelState.AddModelError("", "El rol seleccionado no es válido.");
+                            return View();
+                        }
 
-                            // Si se requiere restricción estricta, descomentar:
-                            // ModelState.AddModelError("", "No tienes permisos para acceder con el rol seleccionado.");
-                            // return View();
+                        // Verificar si el usuario tiene permiso para ese rol (implementar lógica según necesidad)
+                        bool tienePermiso = VerificarPermisoRol(usuario.UsuarioID, rolID.Value);
+                        if (!tienePermiso)
+                        {
+                            ModelState.AddModelError("", "No tienes permiso para acceder con ese rol.");
+                            return View();
+                        }
 
-                            // Obtener el rol seleccionado para la sesión
-                            var rol = db.Roles.Find(rolID);
-                            if (rol == null)
-                            {
-                                ModelState.AddModelError("", "El rol seleccionado no es válido.");
-                                return View();
-                            }
-
-                            // Crear datos de usuario con el rol seleccionado
-                            string userData = rol.Nombre;
-
-                            // Establecer la cookie con el rol seleccionado
-                            FormsAuthentication.SetAuthCookie(usuario.NombreUsuario, false);
-
-                            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
-                                1,                           // Versión
-                                usuario.NombreUsuario,       // Nombre de usuario
-                                DateTime.Now,                // Fecha de emisión
-                                DateTime.Now.AddHours(8),    // Fecha de expiración (8 horas)
-                                false,                       // No persistente
-                                userData                     // Datos de usuario (rol seleccionado)
-                            );
-
-                            // Cifrar el ticket
-                            string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-
-                            // Crear la cookie
-                            HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                            Response.Cookies.Add(authCookie);
-
-                            // Guardar información en la sesión
-                            Session["UserID"] = usuario.UsuarioID;
-                            Session["UserName"] = usuario.NombreUsuario;
-                            Session["FullName"] = usuario.Nombre + " " + usuario.Apellido;
-                            Session["RolID"] = rolID;
-                            Session["RolNombre"] = rol.Nombre;
-
-                            // Registrar acceso con rol seleccionado
-                            TempData["Mensaje"] = $"Bienvenido/a {usuario.Nombre}. Has ingresado como {rol.Nombre}.";
-
-                            // Redireccionar
-                            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                            {
-                                return Redirect(returnUrl);
-                            }
-                            else
-                            {
-                                return RedirectToAction("Index", "Home");
-                            }
+                        userRoleID = rolID;
+                        rolNombre = selectedRole.Nombre;
+                    }
+                    else if (usuario.RolID.HasValue)
+                    {
+                        // Si no se seleccionó un rol, usar el rol predeterminado del usuario
+                        var userRole = db.Roles.Find(usuario.RolID.Value);
+                        if (userRole != null)
+                        {
+                            rolNombre = userRole.Nombre;
                         }
                     }
-
-                    // Si no se seleccionó un rol específico o el usuario tiene ese rol,
-                    // proceder con el inicio de sesión normal
-
-                    // Crear ticket de autenticación
-                    FormsAuthentication.SetAuthCookie(usuario.NombreUsuario, false);
-
-                    // Agregar rol del usuario a la cookie
-                    string userData = usuario.RolID.HasValue ? db.Roles.Find(usuario.RolID.Value).Nombre : "";
-
-                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
-                        1,                           // Versión
-                        usuario.NombreUsuario,       // Nombre de usuario
-                        DateTime.Now,                // Fecha de emisión
-                        DateTime.Now.AddHours(8),    // Fecha de expiración (8 horas)
-                        false,                       // No persistente
-                        userData                     // Datos de usuario (rol)
-                    );
-
-                    // Cifrar el ticket
-                    string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-
-                    // Crear la cookie
-                    HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                    Response.Cookies.Add(authCookie);
 
                     // Guardar información en la sesión
                     Session["UserID"] = usuario.UsuarioID;
                     Session["UserName"] = usuario.NombreUsuario;
                     Session["FullName"] = usuario.Nombre + " " + usuario.Apellido;
-                    Session["RolID"] = usuario.RolID;
-                    Session["RolNombre"] = userData;
+                    Session["RolID"] = userRoleID;
+                    Session["RolNombre"] = rolNombre;
+                    Session["Avatar"] = ObtenerRutaAvatar(rolNombre); // Nueva función para avatar
+
+                    // Establecer cookies de autenticación
+                    FormsAuthentication.SetAuthCookie(usuario.NombreUsuario, false);
 
                     // Mensaje de bienvenida
-                    var rolNombre = usuario.RolID.HasValue ? db.Roles.Find(usuario.RolID.Value).Nombre : "Usuario";
                     TempData["Mensaje"] = $"Bienvenido/a {usuario.Nombre}. Has ingresado como {rolNombre}.";
+                    TempData["RolActual"] = rolNombre;
 
-                    // Redireccionar a la URL de retorno o a la página de inicio
-                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    {
-                        return Redirect(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    // Redireccionar a la página de inicio
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -366,25 +120,157 @@ namespace ZentroApp.Controllers
         }
 
         // GET: Usuarios/Logout
-        [AllowAnonymous]
         public ActionResult Logout()
         {
-            // Cerrar sesión
-            FormsAuthentication.SignOut();
-
-            // Limpiar la cookie
-            HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, "");
-            cookie.Expires = DateTime.Now.AddDays(-1);
-            Response.Cookies.Add(cookie);
-
             // Limpiar la sesión
             Session.Clear();
             Session.Abandon();
+
+            // Eliminar cookie de autenticación
+            FormsAuthentication.SignOut();
 
             // Mensaje de confirmación
             TempData["Mensaje"] = "Has cerrado sesión correctamente.";
 
             return RedirectToAction("Login");
+        }
+
+        // GET: Usuarios/MiPerfil
+        [Authorize]
+        public ActionResult MiPerfil()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            int usuarioID = Convert.ToInt32(Session["UserID"]);
+            Usuarios usuario = db.Usuarios.Find(usuarioID);
+
+            if (usuario == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Agregar información adicional para la vista
+            ViewBag.RolActual = Session["RolNombre"].ToString();
+            ViewBag.Roles = db.Roles.ToList();
+
+            return View(usuario);
+        }
+
+        // GET: Usuarios/CambiarContrasena
+        [Authorize]
+        public ActionResult CambiarContrasena()
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            return View();
+        }
+
+        // POST: Usuarios/CambiarContrasena
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult CambiarContrasena(string contrasenaActual, string nuevaContrasena, string confirmarContrasena)
+        {
+            if (Session["UserID"] == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            int usuarioID = Convert.ToInt32(Session["UserID"]);
+
+            if (string.IsNullOrEmpty(contrasenaActual) || string.IsNullOrEmpty(nuevaContrasena) || string.IsNullOrEmpty(confirmarContrasena))
+            {
+                ModelState.AddModelError("", "Todos los campos son obligatorios.");
+                return View();
+            }
+
+            if (nuevaContrasena != confirmarContrasena)
+            {
+                ModelState.AddModelError("", "La nueva contraseña y la confirmación no coinciden.");
+                return View();
+            }
+
+            try
+            {
+                bool resultado = CambiarContrasenaUsuario(usuarioID, contrasenaActual, nuevaContrasena);
+                if (resultado)
+                {
+                    TempData["Mensaje"] = "Contraseña cambiada exitosamente.";
+                    return RedirectToAction("MiPerfil");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "La contraseña actual es incorrecta.");
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error al cambiar la contraseña: " + ex.Message);
+                return View();
+            }
+        }
+
+        // Métodos auxiliares
+        private bool VerificarPermisoRol(int usuarioID, int rolID)
+        {
+            // Implementar lógica para verificar si el usuario tiene permiso para el rol seleccionado
+            // Por ahora, devolvemos true para simplificar
+            return true;
+        }
+
+        private bool CambiarContrasenaUsuario(int usuarioID, string contrasenaActual, string nuevaContrasena)
+        {
+            // Implementar lógica para cambiar la contraseña
+            // Este es un método de ejemplo y debe ser adaptado a tu modelo de datos
+            var usuario = db.Usuarios.Find(usuarioID);
+            if (usuario == null)
+            {
+                return false;
+            }
+
+            // Verificar contraseña actual (suponiendo que tienes un método para verificar)
+            // Esto es un ejemplo y debe adaptarse a tu sistema de autenticación
+            if (usuario.Contrasena != contrasenaActual) // En un sistema real, usar hashing
+            {
+                return false;
+            }
+
+            // Cambiar contraseña
+            usuario.Contrasena = nuevaContrasena; // En un sistema real, aplicar hash a la contraseña
+            db.SaveChanges();
+
+            return true;
+        }
+
+        private string ObtenerRutaAvatar(string rolNombre)
+        {
+            // Devolver la ruta del avatar según el rol
+            switch (rolNombre)
+            {
+                case "Administrador":
+                    return "/Content/Images/avatar-admin.png";
+                case "Jefe de Proyecto":
+                    return "/Content/Images/avatar-jefe.png";
+                case "Analista":
+                    return "/Content/Images/avatar-analista.png";
+                case "Desarrollador":
+                    return "/Content/Images/avatar-dev.png";
+                case "QA":
+                    return "/Content/Images/avatar-qa.png";
+                case "Cliente":
+                    return "/Content/Images/avatar-cliente.png";
+                case "Comité de Cambios":
+                    return "/Content/Images/avatar-comite.png";
+                default:
+                    return "/Content/Images/avatar-default.png";
+            }
         }
 
         protected override void Dispose(bool disposing)
