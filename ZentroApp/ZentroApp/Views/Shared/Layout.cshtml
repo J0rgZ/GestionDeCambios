@@ -4,14 +4,280 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Layout</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ZentroApp</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <style>
+        /* Estilos básicos para la funcionalidad */
+        body {
+            padding-top: 50px;
+            padding-bottom: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Estilo básico para el sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #f8f9fa;
+            min-height: calc(100vh - 50px);
+            border-right: 1px solid #dee2e6;
+            padding-top: 20px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar-menu li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .sidebar-menu li:hover {
+            background-color: #e9ecef;
+        }
+
+        .sidebar-submenu {
+            list-style: none;
+            padding-left: 20px;
+            display: none;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Icono para mostrar submenú */
+        .menu-toggle {
+            float: right;
+            cursor: pointer;
+        }
+
+        /* Ajustes para usuarios móviles */
+        @@media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -250px;
+                top: 50px;
+                height: calc(100vh - 50px);
+                z-index: 1000;
+                transition: left 0.3s ease;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .content-wrapper {
+                width: 100%;
+            }
+
+            .sidebar-toggle {
+                display: block !important;
+            }
+        }
+
+        /* Botón para mostrar/ocultar sidebar en móviles */
+        .sidebar-toggle {
+            display: none;
+        }
+
+        /* Estilos para indicar la opción activa */
+        .sidebar-menu li.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .sidebar-menu li.active a {
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <div> 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">ZentroApp</a>
+
+            <!-- Botón para sidebar en móviles -->
+            <button class="navbar-toggler sidebar-toggle" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Botón para navbar en móviles -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Home")">Inicio</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown">
+                            <i class="fa fa-user"></i> @User.Identity.Name
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="@Url.Action("MiPerfil", "Usuarios")">Mi Perfil</a>
+                            <a class="dropdown-item" href="@Url.Action("CambiarContrasena", "Usuarios")">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Logout", "Usuarios")">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="@Url.Action("Index", "Home")"><i class="fa fa-dashboard"></i> Dashboard</a>
+                </li>
+
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li>
+                        <a href="#"><i class="fa fa-users"></i> Administración <span class="menu-toggle"><i class="fa fa-chevron-down"></i></span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="@Url.Action("Index", "Usuarios")">Usuarios</a></li>
+                            <li><a href="@Url.Action("Index", "Roles")">Roles</a></li>
+                        </ul>
+                    </li>
+                }
+
+                <li>
+                    <a href="#"><i class="fa fa-folder"></i> Proyectos <span class="menu-toggle"><i class="fa fa-chevron-down"></i></span></a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="@Url.Action("Index", "Proyectos")">Lista de Proyectos</a></li>
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Gerente"))
+                        {
+                            <li><a href="@Url.Action("Create", "Proyectos")">Nuevo Proyecto</a></li>
+                        }
+                    </ul>
+                </li>
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Gerente") || User.IsInRole("Líder"))
+                {
+                    <li>
+                        <a href="#"><i class="fa fa-refresh"></i> Gestión de Cambios <span class="menu-toggle"><i class="fa fa-chevron-down"></i></span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="@Url.Action("Index", "SolicitudesCambio")">Solicitudes de Cambio</a></li>
+                            <li><a href="@Url.Action("Index", "OrdenesCambio")">Órdenes de Cambio</a></li>
+                        </ul>
+                    </li>
+                }
+
+                <li>
+                    <a href="#"><i class="fa fa-cogs"></i> Configuración <span class="menu-toggle"><i class="fa fa-chevron-down"></i></span></a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="@Url.Action("Index", "ElementosConfiguracion")">Elementos de Configuración</a></li>
+                        @if (User.IsInRole("Administrador") || User.IsInRole("Gerente"))
+                        {
+                            <li><a href="@Url.Action("Index", "Metodologias")">Metodologías</a></li>
+                        }
+                    </ul>
+                </li>
+
+                @if (User.IsInRole("Administrador") || User.IsInRole("Gerente") || User.IsInRole("Líder"))
+                {
+                    <li>
+                        <a href="#"><i class="fa fa-calendar"></i> Cronograma <span class="menu-toggle"><i class="fa fa-chevron-down"></i></span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="@Url.Action("Index", "Cronograma")">Ver Cronograma</a></li>
+                            <li><a href="@Url.Action("Create", "Cronograma")">Crear Actividad</a></li>
+                        </ul>
+                    </li>
+                }
+
+                <li>
+                    <a href="@Url.Action("Index", "Notificaciones")"><i class="fa fa-bell"></i> Notificaciones</a>
+                </li>
+
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li>
+                        <a href="@Url.Action("Index", "Auditoria")"><i class="fa fa-history"></i> Auditoría</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="content-wrapper">
+            @RenderBody()
+
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - ZentroApp</p>
+            </footer>
+        </div>
     </div>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Manejar los submenús
+            $('.menu-toggle').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                $(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+                $(this).closest('li').find('.sidebar-submenu').slideToggle(300);
+            });
+
+            // Marcar la opción activa
+            var currentUrl = window.location.pathname;
+            $('.sidebar-menu a').each(function () {
+                var href = $(this).attr('href');
+                if (href && currentUrl.indexOf(href) > -1) {
+                    $(this).closest('li').addClass('active');
+                    // Si está en un submenu, mostrar el menú padre
+                    if ($(this).closest('.sidebar-submenu').length > 0) {
+                        $(this).closest('.sidebar-submenu').show();
+                        $(this).closest('.sidebar-submenu').closest('li').find('.menu-toggle i').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+                    }
+                }
+            });
+
+            // Toggle para mostrar/ocultar sidebar en móviles
+            $('.sidebar-toggle').click(function () {
+                $('.sidebar').toggleClass('active');
+            });
+
+            // Ocultar sidebar si se hace clic fuera de ella en móviles
+            $(document).click(function (e) {
+                var sidebar = $('.sidebar');
+                var sidebarToggle = $('.sidebar-toggle');
+
+                if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0 &&
+                    !sidebarToggle.is(e.target) && sidebarToggle.has(e.target).length === 0) {
+                    sidebar.removeClass('active');
+                }
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>
